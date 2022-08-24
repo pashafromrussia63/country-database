@@ -1,13 +1,14 @@
 .countryCard {
   display: flex;
   background-color: #ffffff;
-  border: 1px solid #858585;
+  /* border: 1px solid #858585; */
   border-radius: 5px;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 50px;
+  margin: 0 20px 50px;
   overflow: hidden;
-  width: 320px;
+  max-width: 320px;
+  width: calc(20% - 40px);
 }
 
 .countryCard-flag {

@@ -6,7 +6,8 @@ function CountryList() {
   const [countries, setCountries] = useState<Country[]>([]);
 
   const getCountryList = async () => {
-    let response = await fetch('https://restcountries.com/v3.1/all');
+    //let response = await fetch('https://restcountries.com/v3.1/all');
+    let response = await fetch('https://restcountries.com/v3.1/name/united');
     let countries : Country[] = await response.json();
     setCountries(countries);
   };
