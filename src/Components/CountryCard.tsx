@@ -1,5 +1,5 @@
 import React from "react";
-import "./CountryCard.css";
+import "./CountryCard.scss";
 
 export interface Country {
   name: {
