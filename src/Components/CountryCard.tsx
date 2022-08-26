@@ -4,13 +4,20 @@ import "./CountryCard.scss";
 
 export interface Country {
   name: {
-    common: string
+    common: string,
+    nativeName: {
+      [language : string]: {
+        official: string,
+        common: string
+      }
+    }
   },
   population: number,
   region: string,
+  subregion: string,
   capital: string,
   flags: {
-    png: string
+    svg: string
   },
   cca3: string
 }
@@ -27,7 +34,7 @@ function CountryCard(props: {country: Country}) {
       >
       <img
         className="countryCard-flag"
-        src={props.country.flags.png}
+        src={props.country.flags.svg}
         alt={props.country.name.common}
       ></img>
       </Link>

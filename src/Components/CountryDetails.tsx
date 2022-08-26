@@ -11,6 +11,10 @@ function formatNumber(number : number) {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+function getNativeName(nativeName : {[language : string]: { official: string, common: string }}) : string {
+  return Object.values(nativeName).map(name => name.common).join(', ');
+}
+
 function CountryDetails(props: {countries : Country[]}) {
   let { countryCode } = useParams();
 
@@ -33,24 +37,45 @@ function CountryDetails(props: {countries : Country[]}) {
       <div className="countryDetails-content">
         <img
           className="countryDetails-flag"
-          src={country.flags.png}
+          src={country.flags.svg}
           alt={country.name.common}
         ></img>
         <div className="countryDetails-info">
-          <div className="countryDetails-title">
-            {country.name.common}
-          </div>
-          <div>
-            <span className="countryDetails-label">Population: </span>
-            {formatNumber(country.population)}
-          </div>
-          <div>
-            <span className="countryDetails-label">Region: </span>
-            {country.region}
-          </div>
-          <div>
-            <span className="countryDetails-label">Capital: </span>
-            {country.capital}
+          <div className="countryDetails-title">{country.name.common}</div>
+          <div className="countryDetails-main">
+            <div className="countryDetails-column">
+              <div>
+                <span className="countryDetails-label">Native name: </span>
+                {getNativeName(country.name.nativeName)}
+              </div>
+              <div>
+                <span className="countryDetails-label">Population: </span>
+                {formatNumber(country.population)}
+              </div>
+              <div>
+                <span className="countryDetails-label">Region: </span>
+                {country.region}
+              </div>
+              <div>
+                <span className="countryDetails-label">Sub Region: </span>
+                {country.subregion}
+              </div>
+              <div>
+                <span className="countryDetails-label">Capital: </span>
+                {country.capital}
+              </div>
+            </div>
+            <div className="countryDetails-column">
+              <div>
+                <span className="countryDetails-label">Top-level domain: </span>
+              </div>
+              <div>
+                <span className="countryDetails-label">Currencies: </span>
+              </div>
+              <div>
+                <span className="countryDetails-label">Languages: </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

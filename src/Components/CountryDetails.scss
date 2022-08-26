@@ -2,14 +2,14 @@
   &-back {
     align-items: center;
     border: 1px solid #858585;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: pointer;
     color: #111517;
     display: flex;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 5px 30px;
     text-decoration: none;
-    width: 60px;
+    width: 120px;
   }
 
   &-backIcon {
@@ -18,19 +18,41 @@
   }
 
   &-content {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
     margin-top: 30px;
+  }
+
+  &-flag, &-info {
+    width: 45%;
+  }
+
+  &-title {
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  &-main {
+    display: flex;
+  }
+
+  &-column {
+    width: 50%;
+  }
+
+  &-label {
+    font-weight: bold;
   }
 }
 
 .dark {
   .countryDetails {
-    background-color: #2b3945;
-    border-color: #333e48;
-    color: #ffffff;
-
     &-back {
       color: #ffffff;
       fill: #ffffff;
+      background-color: #333e48;
+      border-color: #ffffff;
     }
   }
 }

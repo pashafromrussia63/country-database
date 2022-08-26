@@ -1,6 +1,6 @@
 import React from "react";
 import CountryCard,  { Country } from "./CountryCard";
-import './CountryList.css';
+import './CountryList.scss';
 
 function CountryList(props: {countries: Country[]}) {
   return (
