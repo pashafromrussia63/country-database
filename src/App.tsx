@@ -4,7 +4,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import {ReactComponent as DarkModeIcon} from './icons/dark.svg';
+import { ReactComponent as DarkModeIcon } from './icons/dark.svg';
 import './App.scss';
 
 import { Country } from "./Components/CountryCard";
