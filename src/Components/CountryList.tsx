@@ -1,24 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import CountryCard,  { Country } from "./CountryCard";
 import './CountryList.css';
 
-function CountryList() {
-  const [countries, setCountries] = useState<Country[]>([]);
-
-  const getCountryList = async () => {
-    let response = await fetch('https://restcountries.com/v3.1/all');
-    let countries : Country[] = await response.json();
-    setCountries(countries);
-  };
-
-  useEffect(() => {
-    getCountryList();
-  }, []);
-
+function CountryList(props: {countries: Country[]}) {
   return (
     <div className="countryList">
     {
-      countries.map(country => {
+      props.countries.map(country => {
         return(
           <CountryCard
             key={country.name.common}

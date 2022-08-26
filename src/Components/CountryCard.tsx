@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import "./CountryCard.scss";
 
 export interface Country {
@@ -10,7 +11,8 @@ export interface Country {
   capital: string,
   flags: {
     png: string
-  }
+  },
+  cca3: string
 }
 
 function formatNumber(number : number) {
@@ -18,12 +20,20 @@ function formatNumber(number : number) {
 }
 
 function CountryCard(props: {country: Country}) {
+  const navigate = useNavigate();
+
+  const openDetails = (countryCode: string) => (e : React.MouseEvent) => {
+    e.preventDefault();
+    navigate(`/country/${countryCode}`);
+  }
+
   return (
     <div className="countryCard">
       <img
         className="countryCard-flag"
         src={props.country.flags.png}
         alt={props.country.name.common}
+        onClick={openDetails(props.country.cca3)}
       ></img>
       <div className="countryCard-info">
         <div className="countryCard-title">
