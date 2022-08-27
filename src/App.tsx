@@ -1,11 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
+import { ReactComponent as DarkModeIcon } from './icons/dark.svg';
 import './App.scss';
-import {ReactComponent as DarkModeIcon} from './icons/dark.svg';
 
+import { Country } from "./Components/CountryCard";
 import CountryList from './Components/CountryList';
+import CountryDetails from './Components/CountryDetails';
 
 function App() {
+  const [countries, setCountries] = useState<Country[]>([]);
   const [theme, setTheme] = useState('dark');
+
+  const getCountryList = async () => {
+    let response = await fetch('https://restcountries.com/v3.1/all');
+    let countries : Country[] = await response.json();
+    setCountries(countries);
+  };
 
   const toggleTheme = () : void => {
     if (theme === 'light') {
@@ -15,16 +29,39 @@ function App() {
     }
   }
 
+  useEffect(() => {
+    getCountryList();
+  }, []);
+
   return (
-    <div className={`App ${theme}`}>
-      <div className="theme-selector" onClick={toggleTheme}>
-        <DarkModeIcon
-          className='theme-icon'
-        />
-        <span>{theme === 'dark' ? 'Dark' : 'Light'}</span>
+    <Router>
+      <div className={`App ${theme}`}>
+        <div className="theme-selector" onClick={toggleTheme}>
+          <DarkModeIcon
+            className='theme-icon'
+          />
+          <span>{theme === 'dark' ? 'Dark' : 'Light'}</span>
+        </div>
+        <Routes>
+          <Route
+            path="/country/:countryCode"
+            element={
+              <CountryDetails
+                countries={countries}
+              />
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <CountryList
+                countries={countries}
+              />
+            }
+          />
+        </Routes>
       </div>
-      <CountryList/>
-    </div>
+    </Router>
   );
 }
 

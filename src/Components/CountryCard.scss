@@ -11,17 +11,17 @@
 }
 
 .countryCard-flag {
+  cursor: pointer;
   width: 100%;
 }
 
 .countryCard-info {
-  font-size: 14px;
   padding: 20px;
   text-align: left;
 }
 
 .countryCard-title {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -33,7 +33,5 @@
 .dark {
   .countryCard {
     background-color: #333e48;
-    border-color: #333e48;
-    color: #ffffff;
   }
 }
