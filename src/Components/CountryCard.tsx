@@ -48,6 +48,7 @@ function CountryCard(props: {country: Country}) {
         className="countryCard-flag"
         src={props.country.flags.svg}
         alt={props.country.name.common}
+        loading="lazy"
       ></img>
       </Link>
       <div className="countryCard-info">
