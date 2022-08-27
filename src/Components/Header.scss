@@ -7,7 +7,7 @@
     padding: 20px;
 
     @include breakpoint-tablet {
-      padding: 20px 50px;
+      padding: 20px 70px;
     }
 
     &-title {
@@ -26,7 +26,7 @@
     justify-content: space-between;
     margin-left: auto;
     user-select: none;
-    width: 60px;
+    width: 50px;
 }
 
 .dark {

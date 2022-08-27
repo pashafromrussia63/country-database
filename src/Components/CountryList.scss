@@ -1,5 +1,132 @@
+@import '../styles/mixins.scss';
+
 .countryList {
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
+
+    &-filters {
+        margin-bottom: 30px;
+        width: 100%;
+
+        @include breakpoint-tablet {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            flex-basis: 100%;
+            margin: 0 20px 50px;
+        }
+    }
+    
+    &-search {
+        align-items: center;
+        border-radius: 5px;
+        border: 1px solid #999999;
+        display: flex;
+        padding: 15px 20px;
+        width: 100%;
+
+        input {
+            border: 0;
+
+            &:focus-visible {
+                outline-width: 0;
+            }
+
+            margin-left: 10px;
+        }
+
+        @include breakpoint-tablet {
+            width: 35%
+        }
+    }
+
+    &-filter {
+        cursor: pointer;
+        margin-top: 10px;
+        min-width: 200px;
+        position: relative;
+    }
+
+    &-filterBox {
+        align-items: center;
+        border: 1px solid #999999;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+        white-space: nowrap;
+    }
+
+    &-filterIcon {
+        height: 16px;
+        stroke: #111517;
+        width: 16px;
+    }
+
+    &-filterOptions {
+        background-color: #ffffff;
+        border: 1px solid #999999;
+        border-radius: 5px;
+        height: 100%;
+        left: 0;
+        overflow: hidden;
+        padding-top: 20px;
+        position: fixed;
+        text-align: center;
+        top: 0;
+        width: 100%;
+
+        & > div {
+            padding: 0 40px 0 20px;
+            &:hover {
+                background-color: #fafafa;
+            }
+        }
+
+        @include breakpoint-tablet {
+            height: auto;
+            text-align: left;
+            top: calc(100% + 5px);
+            padding: 10px 0 10px;
+            position: absolute;
+        }
+    }
+
+    &-searchIcon {
+        height: 16px;
+        width: 16px;
+    }
+}
+
+.dark {
+    .countryList {
+        &-search {
+            background-color: #333e48;
+            border-color: #2b3945;
+
+            input {
+                background-color: #333e48;
+                color: #ffffff;
+
+                &::placeholder {
+                    color: #999999;
+                }
+            }
+        }
+
+        &-filterBox, &-filterOptions {
+            background-color: #333e48;
+            border-color: #2b3945;
+
+            & > div {
+                &:hover {
+                    background-color: #2b3945;
+                }
+            }
+        }
+
+        &-filterIcon {
+            stroke: #ffffff;
+        }
+    }
 }
