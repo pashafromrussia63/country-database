@@ -1,3 +1,5 @@
+@import '../styles/mixins.scss';
+
 .countryDetails {
   &-back {
     align-items: center;
@@ -16,44 +18,71 @@
   }
 
   &-content {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
     margin-top: 30px;
+
+    @include breakpoint-tablet {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   &-info {
-    width: 50%;
+    @include breakpoint-tablet {
+      width: 50%;
+    }
   }
 
   &-flag {
     border-radius: 5px;
-    width: 40%;
+    width: 100%;
+
+    @include breakpoint-tablet {
+      width: 40%;
+    }
   }
 
   &-title {
-    font-size: 32px;
+    font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
+
+    @include breakpoint-tablet {
+      font-size: 32px;
+    }
   }
 
   &-main {
-    display: flex;
     margin-bottom: 50px;
+
+    @include breakpoint-tablet {
+      display: flex;
+    }
   }
 
   &-column {
-    width: 50%;
+    @include breakpoint-tablet {
+      width: 50%;
+    }
   }
 
   &-label {
     font-weight: bold;
     margin-right: 5px;
+    white-space: nowrap;
+
+    &--border {
+      flex-basis: 100%;
+
+      @include breakpoint-tablet {
+        flex-basis: auto;
+      }
+    }
   }
 
-  &-border {
+  &-borders {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
   }
 
   &-border {

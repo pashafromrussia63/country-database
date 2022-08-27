@@ -1,0 +1,36 @@
+@import '../styles/mixins.scss';
+
+.header {
+    align-items: center;
+    display: flex;
+    background-color: #ffffff;
+    padding: 20px;
+
+    @include breakpoint-tablet {
+      padding: 20px 50px;
+    }
+
+    &-title {
+        font-size: 16px;
+
+        @include breakpoint-tablet {
+            font-size: 28px;
+        }
+    }
+}
+
+.theme-selector {
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+    justify-content: space-between;
+    margin-left: auto;
+    user-select: none;
+    width: 60px;
+}
+
+.dark {
+    .header {
+        background-color: #333e48;
+    }
+}
