@@ -4,11 +4,9 @@
     border: 1px solid #858585;
     border-radius: 5px;
     cursor: pointer;
-    color: #111517;
     display: flex;
     justify-content: space-between;
     padding: 5px 30px;
-    text-decoration: none;
     width: 120px;
   }
 
@@ -24,17 +22,24 @@
     margin-top: 30px;
   }
 
-  &-flag, &-info {
-    width: 45%;
+  &-info {
+    width: 50%;
+  }
+
+  &-flag {
+    border-radius: 5px;
+    width: 40%;
   }
 
   &-title {
     font-size: 32px;
     font-weight: bold;
+    margin-bottom: 10px;
   }
 
   &-main {
     display: flex;
+    margin-bottom: 50px;
   }
 
   &-column {
@@ -43,13 +48,28 @@
 
   &-label {
     font-weight: bold;
+    margin-right: 5px;
+  }
+
+  &-border {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  &-border {
+    border: 1px solid #858585;;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding: 0 20px;
   }
 }
 
 .dark {
   .countryDetails {
     &-back {
-      color: #ffffff;
       fill: #ffffff;
       background-color: #333e48;
       border-color: #ffffff;

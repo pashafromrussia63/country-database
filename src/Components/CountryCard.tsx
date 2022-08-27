@@ -6,7 +6,7 @@ export interface Country {
   name: {
     common: string,
     nativeName: {
-      [language : string]: {
+      [langCode : string]: {
         official: string,
         common: string
       }
@@ -19,7 +19,19 @@ export interface Country {
   flags: {
     svg: string
   },
-  cca3: string
+  cca3: string,
+  tld: string,
+  currencies: {
+    [currency: string]: {
+      name: string
+    }
+  },
+  languages: {
+    [langCode : string]: [languageName: string]
+  },
+  borders: [
+    cca3: string
+  ]
 }
 
 function formatNumber(number : number) {

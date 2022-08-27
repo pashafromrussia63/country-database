@@ -11,8 +11,16 @@ function formatNumber(number : number) {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function getNativeName(nativeName : {[language : string]: { official: string, common: string }}) : string {
+function getNativeName(nativeName : {[langCode : string]: { common: string }}) : string {
   return Object.values(nativeName).map(name => name.common).join(', ');
+}
+
+function getCurrencies(currencies : {[currency : string]: { name: string }}) : string {
+  return Object.values(currencies).map(currency => currency.name).join(', ');
+}
+
+function getLanguages(languages : {[langCode : string]: [name: string ]}) : string {
+  return Object.values(languages).join(', ');
 }
 
 function CountryDetails(props: {countries : Country[]}) {
@@ -24,6 +32,10 @@ function CountryDetails(props: {countries : Country[]}) {
       404
     </div>
   )
+
+  function getNameByCode(countryCode : string) {
+    return props.countries.find(el => el.cca3 === countryCode)?.name.common;
+  }
 
   return (
     <div className="countryDetails">
@@ -68,14 +80,31 @@ function CountryDetails(props: {countries : Country[]}) {
             <div className="countryDetails-column">
               <div>
                 <span className="countryDetails-label">Top-level domain: </span>
+                {country.tld}
               </div>
               <div>
                 <span className="countryDetails-label">Currencies: </span>
+                {getCurrencies(country.currencies)}
               </div>
               <div>
                 <span className="countryDetails-label">Languages: </span>
+                {getLanguages(country.languages)}
               </div>
             </div>
+          </div>
+          <div className="countryDetails-borders">
+            <span className="countryDetails-label">Border countries: </span>
+            {
+              country.borders.map(border => (
+                <Link
+                  style={{display: 'inline-block'}}
+                  key={border}
+                  to={`/country/${border}`}
+                >
+                  <div className="countryDetails-border">{getNameByCode(border)}</div>
+                </Link>
+              ))
+            }
           </div>
         </div>
       </div>
