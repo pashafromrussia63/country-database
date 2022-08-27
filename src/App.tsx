@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import Header from './Components/Header';
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
-import { ReactComponent as DarkModeIcon } from './icons/dark.svg';
 import './App.scss';
 
 import { Country } from "./Components/CountryCard";
@@ -36,30 +36,30 @@ function App() {
   return (
     <Router>
       <div className={`App ${theme}`}>
-        <div className="theme-selector" onClick={toggleTheme}>
-          <DarkModeIcon
-            className='theme-icon'
-          />
-          <span>{theme === 'dark' ? 'Dark' : 'Light'}</span>
+        <Header 
+          onToggle = { toggleTheme }
+          theme = { theme }
+        />
+        <div className='content'>
+          <Routes>
+              <Route
+                path="/country/:countryCode"
+                element={
+                  <CountryDetails
+                    countries={countries}
+                  />
+                }
+              />
+              <Route
+                path="/"
+                element={
+                  <CountryList
+                    countries={countries}
+                  />
+                }
+              />
+            </Routes>
         </div>
-        <Routes>
-          <Route
-            path="/country/:countryCode"
-            element={
-              <CountryDetails
-                countries={countries}
-              />
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <CountryList
-                countries={countries}
-              />
-            }
-          />
-        </Routes>
       </div>
     </Router>
   );

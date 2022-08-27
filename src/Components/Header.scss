@@ -1,0 +1,22 @@
+.header {
+    align-items: center;
+    display: flex;
+    background-color: #ffffff;
+    padding: 20px 50px;
+}
+
+.theme-selector {
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+    justify-content: space-between;
+    margin-left: auto;
+    user-select: none;
+    width: 60px;
+}
+
+.dark {
+    .header {
+        background-color: #333e48;
+    }
+}
