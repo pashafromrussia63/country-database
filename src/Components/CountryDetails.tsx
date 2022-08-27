@@ -41,7 +41,7 @@ function CountryDetails(props: {countries : Country[]}) {
     if (country?.borders) {
       return (
       <div className="countryDetails-borders">
-          <span className="countryDetails-label">Border countries: </span>
+          <span className="countryDetails-label countryDetails-label--border">Border countries: </span>
           {
             country.borders.map(border => (
               <Link

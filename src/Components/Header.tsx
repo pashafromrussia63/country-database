@@ -5,7 +5,7 @@ import './Header.scss';
 export default function Header({ onToggle, theme  } : { onToggle: () => void, theme : string}) {
     return (
         <div className="header">
-            <h1>Where in the world?</h1>
+            <h1 className="header-title">Where in the world?</h1>
             <div className="theme-selector" onClick={ onToggle }>
                 <DarkModeIcon
                 className='theme-icon'

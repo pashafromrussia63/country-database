@@ -1,3 +1,5 @@
+@import '../styles/mixins.scss';
+
 .countryCard {
   display: flex;
   background-color: #ffffff;
@@ -5,9 +7,18 @@
   border-radius: 5px;
   flex-direction: column;
   justify-content: space-between;
-  margin: 0 20px 50px;
+  margin: 0 0 50px;
   overflow: hidden;
-  width: calc(25% - 40px);
+  width: 100%;
+
+  @include breakpoint-tablet {
+    margin: 0 20px 50px;
+    width: calc(50% - 40px);
+  }
+
+  @include breakpoint-laptop {
+    width: calc(25% - 40px);
+  }
 }
 
 .countryCard-flag {

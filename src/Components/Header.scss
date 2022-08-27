@@ -1,8 +1,22 @@
+@import '../styles/mixins.scss';
+
 .header {
     align-items: center;
     display: flex;
     background-color: #ffffff;
-    padding: 20px 50px;
+    padding: 20px;
+
+    @include breakpoint-tablet {
+      padding: 20px 50px;
+    }
+
+    &-title {
+        font-size: 16px;
+
+        @include breakpoint-tablet {
+            font-size: 28px;
+        }
+    }
 }
 
 .theme-selector {
