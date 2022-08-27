@@ -98,6 +98,12 @@
         height: 16px;
         width: 16px;
     }
+
+    &-countries {
+        height: 100%;
+        width: 100%;
+        position: relative;
+    }
 }
 
 .dark {

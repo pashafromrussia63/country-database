@@ -1,5 +1,6 @@
 import React, { Suspense, useState } from 'react';
 import { Country } from "./CountryCard";
+import Loader from "./Loader";
 import { ReactComponent as SearchIcon } from '../icons/search.svg';
 import { ReactComponent as ChevronIcon } from '../icons/chevron.svg';
 import './CountryList.scss';
@@ -76,7 +77,7 @@ function CountryList({ countries } : { countries: Country[] }) {
         </div>
       </div>
       <Suspense
-        fallback={<div>Loading...</div>}
+        fallback={<Loader/>}
       >
         {
           countries.map(country => {
