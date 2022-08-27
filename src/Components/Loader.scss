@@ -1,0 +1,43 @@
+// @import '../styles/mixins.scss';
+
+.loader {
+    height: 200px;
+    position: relative;
+    width: 100%;
+
+    &-content {
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        width: 200px;
+    }
+
+    &-spinner {
+        fill:transparent;
+        stroke: #3eb489;
+        stroke-width: 7px;
+        stroke-linecap: round;
+
+        transform-origin: center;
+        animation-name: animation;
+        animation-duration: 1.2s;
+        animation-timing-function: cubic-bezier;
+        animation-iteration-count: infinite;
+    }
+}
+  
+@keyframes animation {
+    0% {
+        stroke-dasharray: 1 98;
+        stroke-dashoffset: -105;
+    }
+    50% {
+        stroke-dasharray: 80 10;
+        stroke-dashoffset: -160;
+    }
+    100% {
+        stroke-dasharray: 1 98;
+        stroke-dashoffset: -300;
+    }
+}
