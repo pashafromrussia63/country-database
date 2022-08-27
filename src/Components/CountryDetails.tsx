@@ -37,6 +37,28 @@ function CountryDetails(props: {countries : Country[]}) {
     return props.countries.find(el => el.cca3 === countryCode)?.name.common;
   }
 
+  const BorderCountries = () => {
+    if (country?.borders) {
+      return (
+      <div className="countryDetails-borders">
+          <span className="countryDetails-label">Border countries: </span>
+          {
+            country.borders.map(border => (
+              <Link
+                className="countryDetails-border"
+                key={border}
+                to={`/country/${border}`}
+              >
+                {getNameByCode(border)}
+              </Link>
+            ))
+          }
+        </div>
+      )
+    }
+    return null;
+  }
+
   return (
     <div className="countryDetails">
       <Link
@@ -92,20 +114,7 @@ function CountryDetails(props: {countries : Country[]}) {
               </div>
             </div>
           </div>
-          <div className="countryDetails-borders">
-            <span className="countryDetails-label">Border countries: </span>
-            {
-              country.borders.map(border => (
-                <Link
-                  style={{display: 'inline-block'}}
-                  key={border}
-                  to={`/country/${border}`}
-                >
-                  <div className="countryDetails-border">{getNameByCode(border)}</div>
-                </Link>
-              ))
-            }
-          </div>
+          <BorderCountries />
         </div>
       </div>
     </div>
