@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import CountryCard,  { Country } from "./CountryCard";
+import React, { Suspense, useState } from 'react';
+import { Country } from "./CountryCard";
 import { ReactComponent as SearchIcon } from '../icons/search.svg';
 import { ReactComponent as ChevronIcon } from '../icons/chevron.svg';
 import './CountryList.scss';
+
+const CountryCard = React.lazy(() => import("./CountryCard"))
 
 const REGIONS : string[] = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
@@ -73,19 +75,23 @@ function CountryList({ countries } : { countries: Country[] }) {
           <RegionFilterOptions />
         </div>
       </div>
-      {
-        countries.map(country => {
-          if (country.name.common.toLowerCase().includes(filter) && (country.region === region || !region)) {
-            return(
-              <CountryCard
-                key={country.name.common}
-                country={country}
-              />
-            )
-          }
-          return null;
-        })
-      }
+      <Suspense
+        fallback={<div>Loading...</div>}
+      >
+        {
+          countries.map(country => {
+            if (country.name.common.toLowerCase().includes(filter) && (country.region === region || !region)) {
+              return(
+                <CountryCard
+                  key={country.name.common}
+                  country={country}
+                />
+              )
+            }
+            return null;
+          })
+        }
+      </Suspense>
     </div>
   );
 }
