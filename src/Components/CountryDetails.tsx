@@ -1,63 +1,21 @@
 import React from "react";
-import {
-  Link,
-  useParams
-} from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
+import BorderCountries from './BorderCountries';
 import { ReactComponent as ReturnIcon } from '../icons/arrow.svg';
 import { Country } from "../types";
+import {
+  formatNumber,
+  getNativeName,
+  getCurrencies,
+  getLanguages
+} from '../helpers';
 import "./CountryDetails.scss";
 
-function formatNumber(number : number) {
-  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
-function getNativeName(nativeName : {[langCode : string]: { common: string }}) : string {
-  return Object.values(nativeName).map(name => name.common).join(', ');
-}
-
-function getCurrencies(currencies : {[currency : string]: { name: string }}) : string {
-  return Object.values(currencies).map(currency => currency.name).join(', ');
-}
-
-function getLanguages(languages : {[langCode : string]: [name: string ]}) : string {
-  return Object.values(languages).join(', ');
-}
-
-function CountryDetails(props: {countries : Country[]}) {
+function CountryDetails({ countries } : { countries: Country[] }) {
   let { countryCode } = useParams();
 
-  let country = props.countries.find(el => el.cca3 === countryCode);
-  if (!country) return (
-    <div>
-      404
-    </div>
-  )
-
-  function getNameByCode(countryCode : string) {
-    return props.countries.find(el => el.cca3 === countryCode)?.name.common;
-  }
-
-  const BorderCountries = () => {
-    if (country?.borders) {
-      return (
-      <div className="countryDetails-borders">
-          <span className="countryDetails-label countryDetails-label--border">Border countries: </span>
-          {
-            country.borders.map(border => (
-              <Link
-                className="countryDetails-border"
-                key={border}
-                to={`/country/${border}`}
-              >
-                {getNameByCode(border)}
-              </Link>
-            ))
-          }
-        </div>
-      )
-    }
-    return null;
-  }
+  let country = countries.find(el => el.cca3 === countryCode);
+  if (!country) return <Navigate to="/" />;
 
   return (
     <div className="countryDetails">
@@ -114,7 +72,10 @@ function CountryDetails(props: {countries : Country[]}) {
               </div>
             </div>
           </div>
-          <BorderCountries />
+          <BorderCountries
+            countries={ countries }
+            country={ country }
+          />
         </div>
       </div>
     </div>

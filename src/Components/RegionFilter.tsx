@@ -33,7 +33,7 @@ function RegionFilter({ region, setRegion } : { region: RegionFilterOption, setR
         </div>
       )
     }
-    return null;
+    return <></>;
   }
 
   return (

@@ -2,6 +2,10 @@ type Region = 'Africa' | 'Americas' | 'Asia' | 'Europe' | 'Oceania';
 
 export type RegionFilterOption = Region | 'All';
 
+export type Currency = {[currency : string]: { name: string }};
+
+export type Language = {[langCode : string]: [languageName: string]};
+
 export interface Country {
     name: {
       common: string,
@@ -21,14 +25,8 @@ export interface Country {
     },
     cca3: string,
     tld: string,
-    currencies: {
-      [currency: string]: {
-        name: string
-      }
-    },
-    languages: {
-      [langCode : string]: [languageName: string]
-    },
+    currencies: Currency,
+    languages: Language,
     borders: [
       cca3: string
     ]
