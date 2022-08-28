@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import './App.scss';
 
-import { Country } from "./Components/CountryCard";
+import { Country } from "./types";
 import CountryList from './Components/CountryList';
 import CountryDetails from './Components/CountryDetails';
 

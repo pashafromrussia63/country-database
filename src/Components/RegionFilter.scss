@@ -1,0 +1,72 @@
+@import '../styles/mixins.scss';
+
+.regionFilter {
+    cursor: pointer;
+    margin-top: 10px;
+    min-width: 200px;
+    position: relative;
+
+    &-button {
+        align-items: center;
+        border: 1px solid #999999;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+        white-space: nowrap;
+    }
+    
+    &-icon {
+        height: 16px;
+        stroke: #111517;
+        width: 16px;
+    }
+    
+    &-options {
+        background-color: #ffffff;
+        border: 1px solid #999999;
+        border-radius: 5px;
+        height: 100%;
+        left: 0;
+        overflow: hidden;
+        padding-top: 20px;
+        position: fixed;
+        text-align: center;
+        top: 0;
+        width: 100%;
+    
+        & > div {
+            padding: 0 40px 0 20px;
+            &:hover {
+                background-color: #fafafa;
+            }
+        }
+    
+        @include breakpoint-tablet {
+            height: auto;
+            text-align: left;
+            top: calc(100% + 5px);
+            padding: 10px 0 10px;
+            position: absolute;
+        }
+    }
+}
+
+.dark {
+    .regionFilter {
+        &-button, &-options {
+            background-color: #333e48;
+            border-color: #2b3945;
+
+            & > div {
+                &:hover {
+                    background-color: #2b3945;
+                }
+            }
+        }
+
+        &-icon {
+            stroke: #ffffff;
+        }
+    }
+}

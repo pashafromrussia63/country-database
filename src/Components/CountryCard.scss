@@ -3,7 +3,7 @@
 .countryCard {
   display: flex;
   background-color: #ffffff;
-  /* border: 1px solid #858585; */
+  border: 1px solid #858585;
   border-radius: 5px;
   flex-direction: column;
   justify-content: space-between;
@@ -44,5 +44,6 @@
 .dark {
   .countryCard {
     background-color: #333e48;
+    border-color: #2b3945;
   }
 }

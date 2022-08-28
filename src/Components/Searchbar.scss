@@ -1,0 +1,47 @@
+@import '../styles/mixins.scss';
+
+.searchbar {
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid #999999;
+    display: flex;
+    padding: 15px 20px;
+    width: 100%;
+
+    &-icon {
+        height: 16px;
+        width: 16px;
+    }
+
+    input {
+        background-color: #fafafa;
+        border: 0;
+        width: 100%;
+
+        &:focus-visible {
+            outline-width: 0;
+        }
+
+        margin-left: 10px;
+    }
+
+    @include breakpoint-tablet {
+        width: 35%
+    }
+}
+
+.dark {
+    .searchbar {
+        background-color: #333e48;
+        border-color: #2b3945;
+
+        input {
+            background-color: #333e48;
+            color: #ffffff;
+
+            &::placeholder {
+                color: #999999;
+            }
+        }
+    }
+}
