@@ -4,7 +4,7 @@ import {
   useParams
 } from "react-router-dom";
 import { ReactComponent as ReturnIcon } from '../icons/arrow.svg';
-import { Country } from "../types/types";
+import { Country } from "../types";
 import "./CountryDetails.scss";
 
 function formatNumber(number : number) {

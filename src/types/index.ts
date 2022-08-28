@@ -1,4 +1,6 @@
-export type Region = 'Africa' | 'Americas' | 'Asia' | 'Europe' | 'Oceania';
+type Region = 'Africa' | 'Americas' | 'Asia' | 'Europe' | 'Oceania';
+
+export type RegionFilterOption = Region | 'All';
 
 export interface Country {
     name: {
