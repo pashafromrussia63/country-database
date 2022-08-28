@@ -1,5 +1,5 @@
 import React, { Suspense, useState } from 'react';
-import { Country } from "./CountryCard";
+import { Country, Region } from "../types/types";
 import Loader from "./Loader";
 import { ReactComponent as SearchIcon } from '../icons/search.svg';
 import { ReactComponent as ChevronIcon } from '../icons/chevron.svg';
@@ -7,7 +7,7 @@ import './CountryList.scss';
 
 const CountryCard = React.lazy(() => import("./CountryCard"))
 
-const REGIONS : string[] = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+const REGIONS : Array<Region | 'All'> = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
 function CountryList({ countries } : { countries: Country[] }) {
   const [filter, setFilter] = useState('');

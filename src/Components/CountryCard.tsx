@@ -1,38 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { Country } from '../types/types';
 import "./CountryCard.scss";
-
-export interface Country {
-  name: {
-    common: string,
-    nativeName: {
-      [langCode : string]: {
-        official: string,
-        common: string
-      }
-    }
-  },
-  population: number,
-  region: string,
-  subregion: string,
-  capital: string,
-  flags: {
-    svg: string
-  },
-  cca3: string,
-  tld: string,
-  currencies: {
-    [currency: string]: {
-      name: string
-    }
-  },
-  languages: {
-    [langCode : string]: [languageName: string]
-  },
-  borders: [
-    cca3: string
-  ]
-}
 
 function formatNumber(number : number) {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
