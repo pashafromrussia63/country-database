@@ -41,7 +41,7 @@ function CountryList({ countries } : { countries: Country[] }) {
                 />
               )
             }
-            return <></>;
+            return null;
           })
         }
       </Suspense>

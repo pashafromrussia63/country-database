@@ -26,5 +26,5 @@ export default function BorderCountries({countries, country } : {countries : Cou
       </div>
     )
   }
-  return <></>;
+  return null;
 }

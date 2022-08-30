@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Components/Header';
+import CountryList from './Components/CountryList';
+import CountryDetails from './Components/CountryDetails';
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
 import './App.scss';
-
 import { Country } from "./types";
-import CountryList from './Components/CountryList';
-import CountryDetails from './Components/CountryDetails';
 
 function App() {
   const [countries, setCountries] = useState<Country[]>([]);
   const [theme, setTheme] = useState('dark');
 
   const getCountryList = async () => {
+    console.log('fetching data');
     let response = await fetch('https://restcountries.com/v3.1/all');
     let countries : Country[] = await response.json();
     setCountries(countries);
@@ -45,17 +45,13 @@ function App() {
               <Route
                 path="/country/:countryCode"
                 element={
-                  <CountryDetails
-                    countries={countries}
-                  />
+                  <CountryDetails countries={countries}/>
                 }
               />
               <Route
                 path="/"
                 element={
-                  <CountryList
-                    countries={countries}
-                  />
+                  <CountryList countries={countries}/> 
                 }
               />
             </Routes>

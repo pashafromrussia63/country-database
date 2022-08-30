@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
+import Loader from "./Loader";
 import BorderCountries from './BorderCountries';
 import { ReactComponent as ReturnIcon } from '../icons/arrow.svg';
 import { Country } from "../types";
@@ -14,7 +15,12 @@ import "./CountryDetails.scss";
 function CountryDetails({ countries } : { countries: Country[] }) {
   let { countryCode } = useParams();
 
+  if (!countries.length) return <Loader/>;
+
   let country = countries.find(el => el.cca3 === countryCode);
+  console.log('countries', countries);
+  console.log('countryCode', countryCode);
+
   if (!country) return <Navigate to="/" />;
 
   return (
