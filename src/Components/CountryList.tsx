@@ -1,15 +1,20 @@
 import React, { Suspense, useState } from 'react';
-import { Country, RegionFilterOption } from "../types";
+import { useSelector, useDispatch } from 'react-redux';
+import { Country } from "../types";
 import Loader from "./Loader";
 import Searchbar from './Searchbar';
 import RegionFilter from './RegionFilter';
 import './CountryList.scss';
+import { RootState } from '..';
+import { setRegionFilter } from '../redux/countrySlice';
 
 const CountryCard = React.lazy(() => import("./CountryCard"))
 
-function CountryList({ countries } : { countries: Country[] }) {
+function CountryList() {
   const [search, setSearch] = useState('');
-  const [region, setRegion] = useState<RegionFilterOption>('All');
+  const countries = useSelector((state: RootState) => state.country.countries);
+  const region = useSelector((state: RootState) => state.country.regionFilter);
+  const dispatch = useDispatch();
 
   const isCountryDisplayed = (country : Country) => {
     let searchCondition = country.name.common.toLowerCase().includes(search);
@@ -25,7 +30,7 @@ function CountryList({ countries } : { countries: Country[] }) {
         />
         <RegionFilter 
           region={ region }
-          setRegion = { setRegion }
+          setRegion = { (region) => dispatch(setRegionFilter(region)) }
         />
       </div>
       <Suspense

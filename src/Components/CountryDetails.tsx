@@ -1,9 +1,9 @@
 import React from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
+import { useSelector } from 'react-redux';
 import Loader from "./Loader";
 import BorderCountries from './BorderCountries';
 import { ReactComponent as ReturnIcon } from '../icons/arrow.svg';
-import { Country } from "../types";
 import {
   formatNumber,
   getNativeName,
@@ -11,9 +11,11 @@ import {
   getLanguages
 } from '../helpers';
 import "./CountryDetails.scss";
+import { RootState } from "..";
 
-function CountryDetails({ countries } : { countries: Country[] }) {
+function CountryDetails() {
   let { countryCode } = useParams();
+  const countries = useSelector((state: RootState) => state.country.countries);
 
   if (!countries.length) return <Loader/>;
 
